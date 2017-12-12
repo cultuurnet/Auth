@@ -52,11 +52,11 @@ Listing available commands and getting help
 
 Use the ``list`` command to get a list of available commands:
 
-    $ ./vendor/bin/cultuurnet-auth list
+    $ ./vendor/cultuurnet/auth/bin/cultuurnet-auth list
 
 Use the ``help`` command to get help for a specific command, for example for the ``authenticate`` command:
 
-    $ ./vendor/bin/cultuurnet-auth help authenticate
+    $ ./vendor/cultuurnet/auth/bin/cultuurnet-auth help authenticate
 
 User preferences
 ----------------

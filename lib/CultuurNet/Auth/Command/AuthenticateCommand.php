@@ -13,6 +13,7 @@ use \Guzzle\Plugin\Cookie\CookiePlugin;
 use \Guzzle\Plugin\Cookie\CookieJar\ArrayCookieJar;
 
 use \CultuurNet\Auth\Session\JsonSessionFile;
+use Symfony\Component\Console\Question\Question;
 
 class AuthenticateCommand extends Command
 {
@@ -96,15 +97,21 @@ class AuthenticateCommand extends Command
         $user = $in->getOption('username');
         $password = $in->getOption('password');
 
-        $dialog = $this->getHelperSet()->get('dialog');
-        /* @var \Symfony\Component\Console\Helper\DialogHelper $dialog */
+        //$dialog = $this->getHelperSet()->get('dialog');
+        $dialog = $this->getHelper('question');
+        /* @var \Symfony\Component\Console\Helper\QuestionHelper $dialog */
 
         while (NULL === $user) {
-            $user = $dialog->ask($out, 'User name: ');
+            $userNameQuestion = new Question('User name: ');
+            $user = $dialog->ask($in, $out, $userNameQuestion);
+            //$user = $dialog->ask($out, 'User name: ');
         }
 
         while (NULL === $password) {
-            $password = $dialog->askHiddenResponse($out, 'Password: ');
+            $passwordQuestion = new Question('Password: ');
+            $passwordQuestion->setHidden(true);
+            $passwordQuestion->setHiddenFallback(false);
+            $password = $dialog->ask($in, $out, $passwordQuestion);
         }
 
         $postData = array(

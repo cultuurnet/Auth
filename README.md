@@ -1,3 +1,6 @@
+![Maintenance](https://img.shields.io/badge/status-unmaintained-red.svg)
+## ⚠️ This project is no longer maintained
+
 CultuurNet\Auth is a PHP library implementing
 
 * the consumer-side of the authentication flow of CultuurNet's UiTiD, which is based on [OAuth 1.0a Core][oauth_core]
